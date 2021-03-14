@@ -28,11 +28,11 @@ const MovieByGenres = () => {
     return <h1 className="text-white text-center text-4xl mt-10">Loading</h1>;
 
   return (
-    <div className="mb-10 container px-4 mx-auto mt-24">
+    <div className="mb-10 container mx-auto mt-24">
       <h1 className="text-white text-center text-red-500 text-4xl font-bold mt-10 uppercase">
         {gendre}
       </h1>
-      ;
+
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         {data.results.map((g, i) => (
           <div key={i} className="relative rounded overflow-hidden movie-card">
