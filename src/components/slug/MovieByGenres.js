@@ -29,7 +29,7 @@ const MovieByGenres = () => {
 
   return (
     <div className="mb-10 container mx-auto mt-24">
-      <h1 className="text-white text-center text-red-500 text-4xl font-bold mt-10 uppercase">
+      <h1 className="text-white text-center text-red-500 text-4xl font-bold my-10 uppercase">
         {gendre}
       </h1>
 
