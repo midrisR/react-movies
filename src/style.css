@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    background: #1e2129;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-dark {
+    background: #1e2129;
+}
+.bg-soft {
+    background: rgba(30,33,41,0.9);
+    transition: .5s;
+    transition-duration: .5s;
+    transition-timing-function: ease-in-out;
+}
+.bg-overflow {
+    background: rgb(30,33,41);
+    background: linear-gradient(0deg, rgba(30,33,41,0.7962535355939251) 10%, rgba(30,33,41,0) 100%);
+}
+.react-player {
+    border-radius: 20px !important;
+    overflow: hidden;
+}
+.main-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 48%;
+    transform: translate(-50%,-50%);
+}
+
+.dropdown-menu{
+    display: none;
+}
+.dropdown-toggle:hover .dropdown-menu{
+    display: flex ;
+    min-width: 400px;
+}
+
+.card-overflow {
+    position: absolute;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    transition: ease-in-out;
+    transition-duration: .5s;
+   
+}
+.movie-card:hover .card-overflow {
+    transform: translateY(-100%);
+}
