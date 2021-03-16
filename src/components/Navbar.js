@@ -132,6 +132,7 @@ const Navbar = () => {
                     <Link
                       to={`/gendre/${g.id}/${g.name}`}
                       className="mt-4 lg:mt-0 py-2 mr-2"
+                      onClick={() => setShow((state) => !state)}
                     >
                       {g.name}
                     </Link>
