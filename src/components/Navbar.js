@@ -32,10 +32,6 @@ const Navbar = () => {
     };
   }, []);
 
-  const HandleHover = (name) => {
-    if (name) setShow((state) => !state);
-  };
-
   return (
     <nav
       ref={myRef}
@@ -81,7 +77,7 @@ const Navbar = () => {
           <button
             id="nav"
             className="flex items-center px-3 py-2 border-2 rounded text-gray-200 border-gray-200"
-            onMouseEnter={() => HandleHover("genres")}
+            onClick={() => setShow((state) => !state)}
           >
             <svg
               className="fill-current h-3 w-3"
@@ -96,7 +92,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`menu w-full lg:flex flex-grow lg:items-center lg:w-auto lg:px-3 px-8 font-light ${
+        className={` w-full lg:flex flex-grow lg:items-center lg:w-auto lg:px-3 px-8 font-light ${
           show ? "block" : "hidden"
         }`}
       >
@@ -104,6 +100,7 @@ const Navbar = () => {
           <Link
             to="/"
             className="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 mr-2"
+            onClick={() => setShow(false)}
           >
             Home
           </Link>

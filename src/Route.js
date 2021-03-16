@@ -5,6 +5,7 @@ import PopularById from "./components/slug/PopularById";
 import MovieByGenres from "./components/slug/MovieByGenres";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
+
 export default function Routes() {
   return (
     <Router>

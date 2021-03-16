@@ -1,9 +1,14 @@
 import { useQuery } from "react-query";
 const Gendres = ({ id }) => {
-  const { data, isLoading } = useQuery("genres", () =>
-    fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
-    ).then((res) => res.json())
+  const { data, isLoading } = useQuery(
+    "genres",
+    () =>
+      fetch(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
+      ).then((res) => res.json()),
+    {
+      refetchOnMount: false,
+    }
   );
   if (isLoading) return null;
 
