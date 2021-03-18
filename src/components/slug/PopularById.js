@@ -69,7 +69,7 @@ const PopularById = () => {
                         .join(" / ")}
                     </span>
                   </div>
-                  <div className="mt-1 text-sm block lg:flex items-center">
+                  <div className="mt-1 text-sm flex items-center">
                     <span className="mr-1">vote :</span>
                     <i className="fas fa-star text-yellow-400 mr-1 text-xs" />
                     <p className="text-red-500">{data.vote_average}</p>
