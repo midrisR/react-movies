@@ -143,11 +143,17 @@ const Navbar = () => {
                     </div>
                   </Link>
                 ))}
-              <Link to={`/search?q=${query}`} onClick={() => setQuery("")}>
+              {results.data.results.length > 0 ? (
+                <Link to={`/search?q=${query}`} onClick={() => setQuery("")}>
+                  <div className="bg-red-500 text-center text-white p-2 w-full">
+                    Load More
+                  </div>
+                </Link>
+              ) : (
                 <div className="bg-red-500 text-center text-white p-2 w-full">
-                  Load More
+                  Movies Not Found
                 </div>
-              </Link>
+              )}
             </div>
           )}
         </>
@@ -184,7 +190,7 @@ const Navbar = () => {
               </svg>
             </button>
 
-            <div className="dropdown-menu absolute rounded-md shadow-lg bg-dark ring-1 ring-black ring-opacity-5 focus:outline-none py-1 w-full flex-wrap">
+            <div className="dropdown-menu absolute rounded-md shadow-lg bg-soft ring-1 ring-black ring-opacity-5 focus:outline-none py-1 w-full flex-wrap left-0">
               {isSuccess &&
                 data.genres.map((g, i) => (
                   <div
