@@ -1,5 +1,4 @@
 import Logo from "../logo.png";
-import { Link } from "react-router-dom";
 const Footer = () => (
   <div className="w-full container p-12 py mx-auto">
     <img src={Logo} alt="Logo" className="mx-auto" />
