@@ -35,6 +35,7 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setQuery(false);
     history.push(`/search?q=${query}`);
   };
 
@@ -111,11 +112,11 @@ const Navbar = () => {
       {query ? (
         <>
           {results.isLoading ? (
-            <div className="bg-soft p-3 absolute z-40 top-0 mt-16 w-1/4 right-4 text-white text-center">
+            <div className="bg-soft p-3 absolute z-40 top-0 mt-16 w-full lg:w-1/4 lg:right-4 text-white text-center">
               <h1>loading</h1>
             </div>
           ) : (
-            <div className="bg-soft p-3 absolute z-40 top-0 mt-16 w-1/4 right-4">
+            <div className="bg-soft p-3 absolute z-40 top-0 mt-16 w-full lg:w-1/4 lg:right-4">
               {results.isSuccess &&
                 results.data.results.splice(0, 5).map((val, i) => (
                   <Link
