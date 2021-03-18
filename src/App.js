@@ -2,9 +2,7 @@ import { useQuery } from "react-query";
 import Image from "./components/ImageSlide";
 import PopularMovies from "./components/PopularMovies";
 import TopRated from "./components/TopRated";
-import Footer from "./components/Footer";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
   const { isLoading, data, isFetching } = useQuery("comming soon", () =>
@@ -55,8 +53,6 @@ function App() {
           <TopRated />
         </div>
       </div>
-      <Footer />
-      <ReactQueryDevtools initialIsOpen />
     </div>
   );
 }

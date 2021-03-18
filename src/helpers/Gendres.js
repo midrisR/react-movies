@@ -1,14 +1,12 @@
 import { useQuery } from "react-query";
-const Gendres = ({ id }) => {
+const Gendres = ({ id, css }) => {
   const { data, isLoading } = useQuery(
     "genres",
     () =>
       fetch(
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
       ).then((res) => res.json()),
-    {
-      refetchOnMount: false,
-    }
+    { refetchOnMount: false }
   );
   if (isLoading) return null;
 
@@ -19,7 +17,7 @@ const Gendres = ({ id }) => {
   return (
     <div className="flex text-white text-xs font-light mt-2">
       <p className="mr-1">Genres :</p>
-      <p>{result}</p>
+      <p className={css ? css : "text-white"}>{result}</p>
     </div>
   );
 };

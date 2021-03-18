@@ -2,12 +2,30 @@ import React from "react";
 import Logo from "../logo.png";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "react-query";
+import axios from "axios";
+import Error from "../small.jpg";
+import Gendres from "../helpers/Gendres";
+const SearchMovies = async (query = "") => {
+  const { data } = await axios.get(
+    `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+  );
+  return data;
+};
 
 const Navbar = () => {
   const [show, setShow] = React.useState(false);
   const [query, setQuery] = React.useState("");
   const myRef = React.useRef(null);
   const history = useHistory();
+
+  const results = useQuery(
+    ["SearchMovie", { type: "done" }, query],
+    () => SearchMovies(query),
+    {
+      keepPreviousData: false,
+      enabled: !!query,
+    }
+  );
 
   const { data, isSuccess } = useQuery("getGenres", () =>
     fetch(
@@ -25,9 +43,7 @@ const Navbar = () => {
       if (window.pageYOffset > 0) {
         myRef.current.classList.add("bg-soft");
       } else {
-        myRef.current.classList.remove(
-          ...["bg-dark", "transition", "duration-300", "ease-in-out"]
-        );
+        myRef.current.classList.remove(...["bg-soft"]);
       }
     };
   }, []);
@@ -53,6 +69,7 @@ const Navbar = () => {
             placeholder="Search"
             onChange={(e) => setQuery(e.target.value)}
           />
+
           <button
             type="submit"
             className="absolute right-0 top-0 mt-3 mr-2 focus:outline-none"
@@ -90,6 +107,51 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+      {/* search movie */}
+      {query ? (
+        <>
+          {results.isLoading ? (
+            <div className="bg-soft p-3 absolute z-40 top-0 mt-16 w-1/4 right-4 text-white text-center">
+              <h1>loading</h1>
+            </div>
+          ) : (
+            <div className="bg-soft p-3 absolute z-40 top-0 mt-16 w-1/4 right-4">
+              {results.isSuccess &&
+                results.data.results.splice(0, 5).map((val, i) => (
+                  <Link
+                    to={`/movie/${val.id}`}
+                    key={i}
+                    onClick={() => setQuery("")}
+                  >
+                    <div className="flex flex-wrap">
+                      <div className="w-1/6 mb-5" key={i}>
+                        <img
+                          onError={(e) => {
+                            e.target.src = Error;
+                          }}
+                          src={`https://image.tmdb.org/t/p/w45${val.poster_path}`}
+                          alt={val.title}
+                        />
+                      </div>
+                      <div className="w-5/6 ">
+                        <p className="text-xs text-white">{val.title}</p>
+                        <Gendres
+                          css="text-red-500 font-normal"
+                          id={val.genre_ids}
+                        />
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              <Link to={`/search?q=${query}`} onClick={() => setQuery("")}>
+                <div className="bg-red-500 text-center text-white p-2 w-full">
+                  Load More
+                </div>
+              </Link>
+            </div>
+          )}
+        </>
+      ) : null}
 
       <div
         className={` w-full lg:flex flex-grow lg:items-center lg:w-auto lg:px-3 px-8 font-light ${

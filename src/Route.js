@@ -5,7 +5,7 @@ import PopularById from "./components/slug/PopularById";
 import MovieByGenres from "./components/slug/MovieByGenres";
 import Navbar from "./components/Navbar";
 import Search from "./components/Search";
-
+import Footer from "./components/Footer";
 export default function Routes() {
   return (
     <Router>
@@ -16,6 +16,7 @@ export default function Routes() {
         <Route path="/gendre/:id/:gendre" component={MovieByGenres} />
         <Route path="/search" component={Search} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

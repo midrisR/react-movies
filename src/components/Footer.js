@@ -5,7 +5,10 @@ const Footer = () => (
     <img src={Logo} alt="Logo" className="mx-auto" />
     <div className="text-center text-xs text-gray-300 mt-5 font-ligth">
       <p className="mb-5">Example react js project with TMDB api</p>
-      <Link to="https://www.themoviedb.org/documentation/api">
+      <Link
+        className="underline"
+        to="https://www.themoviedb.org/documentation/api"
+      >
         API Documentation
       </Link>
     </div>
